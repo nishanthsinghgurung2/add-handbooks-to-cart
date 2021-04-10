@@ -1,0 +1,24 @@
+.productConfiguratorContainer{
+  display: flex;
+  flex-direction: row;
+  margin: 50px;
+}
+
+.productConfiguratorForm {
+  position: relative;
+  left: 50px;
+  width: 100%;
+}
+
+.productConfiguratorFormElement {
+  margin-top: 20px;
+}
+
+.productConfiguratorFormElementSuccessMsg {
+  margin-top: 20px;
+  color: green;
+}
+
+.noBooksToShow {
+  margin: 20px;
+}

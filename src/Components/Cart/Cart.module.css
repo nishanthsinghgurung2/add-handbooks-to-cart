@@ -1,0 +1,13 @@
+.cart {
+  margin: 50px;
+  border: 1px solid black;
+}
+
+.cartItem {
+  margin: 20px;
+  border: 1px solid black;
+}
+
+.noItemsInCheckout {
+  margin: 20px;
+}

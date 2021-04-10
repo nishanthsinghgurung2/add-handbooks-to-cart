@@ -1,25 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import ProductConfigurator from './Components/ProductConfigurator/ProductConfigurator';
+import Cart from './Components/Cart/Cart';
+import { productOptionsData } from './Util/productOptionsData';
 
-function App() {
+export type ItemInCartType = {
+  color: string;
+  paperType: string;
+  slipCaseIncluded: boolean;
+  description: string;
+  price: number;
+};
+
+
+const App = () => {
+  const [itemsInCart, setItemsInCart] = useState([] as Array<ItemInCartType>);
+
+  const addItemInCart = (item: ItemInCartType) => {
+    const updatedItemsInCart: Array<ItemInCartType> = itemsInCart;
+    updatedItemsInCart.push(item);
+    setItemsInCart(updatedItemsInCart);
+  };
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Switch>
+          <Route path="/configure-product">
+            <ProductConfigurator productsList={productOptionsData} addItemInCart={addItemInCart} />
+          </Route>
+          <Route path="/cart">
+            <Cart itemsInCart={itemsInCart} />
+          </Route>
+        </Switch>
+      </Router>
+
+    </>
   );
 }
 
